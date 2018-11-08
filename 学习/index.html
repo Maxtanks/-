@@ -17,10 +17,19 @@
     </style>
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
+        //jQuery入口函数,页面加载完毕就会执行入口函数里面的语句。
         $(function(){
+            //获取.tab li元素，并设置鼠标移动上去后要执行的语句。
+            //mouseenter当鼠标指针进入（穿过）元素时，改变元素的显示状态，此处状态是改变li标签的上边框颜色
+            //mouseenter(function(){}),mouseenter后面括号里面的函数是执行的意思，把要执行的语句添加到{}括号里面去
             $(".tab li").mouseenter(function(){
+                //var index：命名一个变量名叫做index。
+                //$(this).index(),鼠标上移选择的当前对象的index位置。
+                //var index,命名一个变量名，并把当前对象的位置赋值给index。
                 var index=$(this).index();
+                //给当前对象添加类名active改变其样式,并获取同胞li标签,然后删除当前对象的active
                 $(this).addClass("active").siblings("li").removeClass("active");
+                //将要变化的.products .main元素同mouseenter的当前对象位置绑定,然后添加selected然后找到同胞.main并给它删除selected。
                 $(".products .main").eq(index).addClass("selected").siblings(".main").removeClass("selected");
             });
         });
